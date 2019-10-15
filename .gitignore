@@ -1,0 +1,10 @@
+node_modules
+node_module
+node_modules/
+.env
+.vscode
+.cache
+.cache/
+.logs/*.log
+dist
+dist/
