@@ -1,4 +1,4 @@
-import { dotenv, Express, Locals } from '.';
+import { dotenv, Express } from '.';
 
 class App {
   public loadServer(): void {

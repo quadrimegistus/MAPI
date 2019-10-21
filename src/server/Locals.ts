@@ -3,12 +3,20 @@ import { dotenv, Application } from '.';
 class Locals {
   public static config(): any {
     dotenv.config();
-    const environment = process.env.NODE_ENV;
-    const port = process.env.MAPI_PORT;
-    const appUri = process.env.MAPI_URI;
-    const apiVersion = process.env.MAPI_VERSION;
-    const isCORSEnabled = process.env.CORS_ENABLED;
-    const apiPrefix = process.env.MAPI_PREFIX;
+    let environment: string;
+    let port: string;
+    let appUri: string | null;
+    let apiVersion: string;
+    let isCORSEnabled: boolean;
+    let apiPrefix: string;
+    let mapQuestApiKey: string | null;
+    process.env.NODE_ENV ? (environment = process.env.NODE_ENV).toString().toLowerCase() : (environment = 'local');
+    process.env.MAPI_PORT ? (port = `:${process.env.MAPI_PORT}`) : (port = '');
+    process.env.MAPI_URI ? (appUri = process.env.MAPI_URI).toString().toLowerCase() : (appUri = null);
+    process.env.MAPI_VERSION ? (apiVersion = process.env.MAPI_VERSION).toString() : (apiVersion = '1.0');
+    process.env.CORS_ENABLED === 'true' ? (isCORSEnabled = true) : (isCORSEnabled = false);
+    process.env.MAPI_PREFIX ? (apiPrefix = `/${process.env.MAPI_PREFIX}/`).toString().toLowerCase() : (apiPrefix = '/');
+    process.env.MAPQUESTAPIKEY ? (mapQuestApiKey = process.env.MAPQUESTAPIKEY).toString() : (mapQuestApiKey = null);
 
     return {
       environment,
@@ -16,7 +24,8 @@ class Locals {
       appUri,
       apiVersion,
       isCORSEnabled,
-      apiPrefix
+      apiPrefix,
+      mapQuestApiKey
     };
   }
 

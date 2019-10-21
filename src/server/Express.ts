@@ -18,20 +18,13 @@ class Express {
     this.express = Routes.mountApi(this.express);
   }
   public init(): any {
-    const port: number | string = Locals.config().port;
+    const port: string = Locals.config().port;
     const apiEnvPrefix: string = Locals.config().apiPrefix;
-    let stringifyPort: string;
-    let apiPrefix: string;
-    port ? (stringifyPort = `${port}`) : (stringifyPort = '');
-    apiEnvPrefix ? (apiPrefix = `/${apiEnvPrefix}/`) : (apiPrefix = '/');
-    this.express.listen(stringifyPort, (_error: any) => {
+    this.express.listen(port, (_error: any) => {
       if (_error) {
         return console.error('Error: ', _error);
       }
-      return console.log(
-        '\x1b[33m%s\x1b[0m',
-        `RedfishAPI Server :: Listening @ '${stringifyPort}${apiPrefix}metrics for new requests.'`
-      );
+      return console.log('\x1b[33m%s\x1b[0m', `MAPI Server :: Listening @ localhost${port}${apiEnvPrefix}.`);
     });
   }
 }
