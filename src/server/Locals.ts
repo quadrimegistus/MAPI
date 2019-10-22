@@ -17,7 +17,6 @@ class Locals {
     process.env.CORS_ENABLED === 'true' ? (isCORSEnabled = true) : (isCORSEnabled = false);
     process.env.MAPI_PREFIX ? (apiPrefix = `/${process.env.MAPI_PREFIX}/`).toString().toLowerCase() : (apiPrefix = '/');
     process.env.MAPQUESTAPIKEY ? (mapQuestApiKey = process.env.MAPQUESTAPIKEY).toString() : (mapQuestApiKey = null);
-
     return {
       environment,
       port,

@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 import * as bodyParser from 'body-parser';
 import * as corsApp from 'cors';
 import { Application } from 'express';
-import Api from '../routes/Api';
+import { Api } from '../api';
 import Routes from './Routes';
 import Locals from './Locals';
 import Kernel from './Kernel';
